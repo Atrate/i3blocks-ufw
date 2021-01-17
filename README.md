@@ -22,7 +22,7 @@ In `~/.config/i3blocks/config`:
 ```
 [ufw]
 command=<path/to/script>/i3blocks-ufw.sh
-interval=60
+interval=60                                     # You can set a lower interval but it will use more CPU
 #SHOW_INACTIVE=true
 #SHOW_ACTIVE=false
 #COLORIZE=false                                 # It seems formatting doesn't work in i3blocks
