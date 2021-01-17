@@ -18,17 +18,17 @@ set -a
 
 SHOW_INACTIVE=${SHOW_INACTIVE:-true}
 SHOW_ACTIVE=${SHOW_ACTIVE:-false}
-COLORIZE=${COLORIZE:-true}
-BOLDEN=${BOLDEN:-true}
-
-NA='\033[0m'                                                            # This escape sequence clears the currently set colour
+COLORIZE=${COLORIZE:-false}                                             # i3blocks seems not to support colour and formatting
+BOLDEN=${BOLDEN:-false}                                                 # but the option will be left available if used e.g. in Polybar
 
 "$COLORIZE" && COL_BAD=${COL_BAD:-'\033[0;31m'} || COL_BAD=""           # Default COL_BAD is red (31)
 "$COLORIZE" && COL_GOOD=${COL_GOOD:-'\033[0;0;32m'} || COL_GOOD=""      # Default COL_GOOD is green (32)
 "$BOLDEN" && BOLD='\033[1m' || BOLD=""
 
-"$SHOW_ACTIVE" && MSG_ACTIVE=${MSG_ACTIVE:-"$COL_GOOD $BOLD UFW ON $NA"} || MSG_ACTIVE=""
-"$SHOW_INACTIVE" && MSG_INACTIVE=${MSG_INACTIVE:-"$COL_BAD $BOLD UFW OFF! $NA"} || MSG_ACTIVE=""
+( "$COLORIZE" | "$BOLDEN" ) && NA='\033[0m' || NA=""                    # This escape sequence clears the currently set colour
+
+"$SHOW_ACTIVE" && MSG_ACTIVE=${MSG_ACTIVE:-"$COL_GOOD$BOLD UFW ON$NA"} || MSG_ACTIVE=""
+"$SHOW_INACTIVE" && MSG_INACTIVE=${MSG_INACTIVE:-"$COL_BAD$BOLD UFW OFF!$NA"} || MSG_ACTIVE=""
 
 if ( sudo ufw status | grep -w active &>/dev/null ) ; then
     echo -e "$MSG_ACTIVE"
