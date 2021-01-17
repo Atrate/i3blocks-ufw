@@ -29,8 +29,8 @@ interval=60                                     # You can set a lower interval b
 #BOLDEN=false                                   # but you can still set it to true for e.g. Polybar
 #COL_GOOD='\033[0;0;32m'
 #COL_BAD='\033[0;31m'
-#MSG_ACTIVE="$COL_GOOD $BOLD UFW ON $NA"
-#MSG_INACTIVE=$COL_BAD $BOLD UFW OFF! $NA"
+#MSG_ACTIVE="$COL_GOOD$BOLD UFW ON$NA"
+#MSG_INACTIVE="$COL_BAD$BOLD UFW OFF!$NA"
 ```
 
 ## Contributing
